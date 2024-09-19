@@ -1,0 +1,23 @@
+<form method="POST">
+    <label for="parceiro_nome">Nome do Parceiro:</label>
+    <input type="text" id="parceiro_nome" name="parceiro_nome" required>
+    
+    <label for="genero">Gênero do Parceiro:</label>
+    <select id="genero" name="genero">
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outro">Outro</option>
+    </select>
+
+    <label for="hobbies">Hobbies do Parceiro:</label>
+    <select id="hobbies" name="hobbies">
+        <option value="Esportes">Esportes</option>
+        <option value="Leitura">Leitura</option>
+        <option value="Música">Música</option>
+        <option value="Cozinha">Cozinha</option>
+        <option value="Tecnologia">Tecnologia</option>
+    </select>
+
+    <input type="hidden" name="usuario_nome" value="{{ request.args.get('usuario_nome') }}">
+    <button type="submit">Cadastrar Parceiro</button>
+</form>
