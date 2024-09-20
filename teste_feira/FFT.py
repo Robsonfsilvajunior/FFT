@@ -71,7 +71,11 @@ nichos_faculdades = {
 # Rota principal para exibir o questionário
 @app.route('/')
 def index():
-    return render_template('index.html', perguntas=perguntas)
+    return render_template('index.html')
+
+@app.route('/questionario')
+def questionario():
+    return render_template('questionario.html', perguntas = perguntas)
 
 # Rota para salvar respostas e determinar a área
 @app.route('/responder', methods=['POST'])
