@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
 
 app = Flask(__name__)
-app.secret_key = "chave_secreta"  # Necessária para exibir mensagens flash
+app.secret_key = "chave_secreta"  
+
 
 # Conectar ao banco de dados MongoDB
 def conectar_db():
@@ -10,11 +11,11 @@ def conectar_db():
     db = client['testefeira']
     return db
 
-# Rota para exibir o questionário
+
 @app.route('/questionario', methods=['GET', 'POST'])
 def questionario():
     if request.method == 'POST':
-        # Receber as respostas do formulário
+    
         respostas = {
             'problemas_logicos': int(request.form['problemas_logicos']),
             'criatividade_inovacao': int(request.form['criatividade_inovacao']),
