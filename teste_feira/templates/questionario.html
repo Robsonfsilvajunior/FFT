@@ -5,6 +5,7 @@
 {% block content %}
     <h1>Responda ao Questionário</h1>
     <form method="POST" action="/">
+<<<<<<< Updated upstream
         <div class="form-group">
             <label>Pergunta 1: Como você avalia o nosso serviço?</label>
             <select name="pergunta1" class="form-control" required>
@@ -38,6 +39,20 @@
             </select>
         </div>
 
+=======
+        {% for i, pergunta in enumerate(perguntas) %}
+            <div class="form-grorp">
+                <label>{{ pergunta }}</label>
+                <select name="pergunta{{ i+1 }}" class="form-control" required>
+                    <option value="1">Discordo totalmente</option>
+                    <option value="2">Discordo</option>
+                    <option value="3">Neutro</option>
+                    <option value="4">Concordo</option>
+                    <option value="5">Concordo totalmente</option>
+                </select>
+            </div>
+        {% endfor %}
+>>>>>>> Stashed changes
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 

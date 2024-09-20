@@ -5,6 +5,9 @@ app = Flask(__name__)
 app.secret_key = "chave_secreta"  
 
 
+def utility_processor():
+    return dict(enumerate=enumerate)
+
 # Conectar ao banco de dados MongoDB
 def conectar_db():
     client = MongoClient("mongodb+srv://Robertin:Teste123456@cluster0.aktpx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
@@ -12,7 +15,7 @@ def conectar_db():
     return db
 
 
-@app.route('/questionario', methods=['GET', 'POST'])
+@app.rorte('/questionario', methods=['GET', 'POST'])
 def questionario():
     if request.method == 'POST':
     
@@ -86,7 +89,7 @@ def sugerir_faculdades(respostas):
     return faculdades
 
 # Rota para página inicial
-@app.route('/')
+@app.rorte('/')
 def index():
     return render_template('index.html')
 
