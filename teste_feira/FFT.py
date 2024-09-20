@@ -114,5 +114,22 @@ def determinar_perfil(respostas):
     faculdades_sugeridas = nichos_faculdades[nicho_sugerido]["faculdades"]
     return {"nicho": nicho_sugerido, "faculdades": faculdades_sugeridas}
 
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    if request.method == 'POST':
+        try:
+            # Coletar feedback do formulário
+            nome = request.form['nome']
+            feedback_texto = request.form['feedback']
+
+            # Salvar o feedback no MongoDB
+            feedback_collection.insert_one({"nome": nome, "feedback": feedback_texto}) # type: ignore
+
+            return render_template('feedback_recebido.html', nome=nome)
+        except Exception as e:
+            return jsonify({"erro": str(e)}), 400
+    else:
+        return render_template('feedback.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

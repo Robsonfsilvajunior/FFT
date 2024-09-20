@@ -3,23 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculdades Sugeridas</title>
-    <link rel="stylesheet" href="https://cdnjs.clordflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <title>Feedback</title>
 </head>
 <body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title">Faculdades Sugeridas</h1>
-            <div class="content">
-                <p>Com base em suas respostas, sugerimos as seguintes faculdades:</p>
-                <ul>
-                    {% for faculdade in faculdades %}
-                    <li>{{ faculdade }}</li>
-                    {% endfor %}
-                </ul>
-                <a href="/" class="button is-primary">Voltar para a página inicial</a>
-            </div>
-        </div>
-    </section>
+    <form action="/feedback" method="post">
+        <input type="hidden" name="nome" value="{{ nome }}">
+        <textarea name="feedback" rows="4" cols="50" placeholder="Digite seu feedback aqui..." required></textarea>
+        <br>
+        <button type="submit">Enviar Feedback</button>
+    </form>
 </body>
 </html>
