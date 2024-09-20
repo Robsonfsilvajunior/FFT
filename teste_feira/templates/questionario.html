@@ -5,28 +5,43 @@
 {% block content %}
     <h1>Responda ao Questionário</h1>
     <form method="POST" action="/">
-        {% for i, pergunta in enumerate(perguntas) %}
-            <div class="form-group">
-                <label>{{ pergunta }}</label>
-                <select name="pergunta{{ i+1 }}" class="form-control" required>
-                    <option value="1">Discordo totalmente</option>
-                    <option value="2">Discordo</option>
-                    <option value="3">Neutro</option>
-                    <option value="4">Concordo</option>
-                    <option value="5">Concordo totalmente</option>
-                </select>
-            </div>
-        {% endfor %}
+        <div class="form-group">
+            <label>Pergunta 1: Como você avalia o nosso serviço?</label>
+            <select name="pergunta1" class="form-control" required>
+                <option value="1">Discordo totalmente</option>
+                <option value="2">Discordo</option>
+                <option value="3">Neutro</option>
+                <option value="4">Concordo</option>
+                <option value="5">Concordo totalmente</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Pergunta 2: A qualidade dos produtos atendeu às suas expectativas?</label>
+            <select name="pergunta2" class="form-control" required>
+                <option value="1">Discordo totalmente</option>
+                <option value="2">Discordo</option>
+                <option value="3">Neutro</option>
+                <option value="4">Concordo</option>
+                <option value="5">Concordo totalmente</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Pergunta 3: O atendimento foi eficiente e cordial?</label>
+            <select name="pergunta3" class="form-control" required>
+                <option value="1">Discordo totalmente</option>
+                <option value="2">Discordo</option>
+                <option value="3">Neutro</option>
+                <option value="4">Concordo</option>
+                <option value="5">Concordo totalmente</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="alert alert-info mt-3">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+    <div class="alert alert-info mt-3">
+        <p>Sua resposta foi enviada com sucesso!</p>
+    </div>
 {% endblock %}
