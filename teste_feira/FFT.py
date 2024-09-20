@@ -84,8 +84,7 @@ def responder():
         perfil = determinar_perfil(respostas)
 
         # Salvar o nome do usuário e o perfil sugerido no MongoDB
-        resultado = {"nome": nome, "perfil": perfil}
-        collection.insert_one(resultado)
+        collection.insert_one({"nome": nome, "perfil": perfil})
 
         return jsonify({"perfil_sugerido": perfil})
     except Exception as e:
@@ -110,10 +109,6 @@ def determinar_perfil(respostas):
     nicho_sugerido = max(perfil_pontuacao, key=perfil_pontuacao.get)
     faculdades_sugeridas = nichos_faculdades[nicho_sugerido]["faculdades"]
     return {"nicho": nicho_sugerido, "faculdades": faculdades_sugeridas}
-
-def consultar ():
-    for collections in collections.find():
-        print(collections)
 
 if __name__ == '__main__':
     app.run(debug=True)
