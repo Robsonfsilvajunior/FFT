@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculdades Sugeridas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Faculdades Sugeridas</h1>
+            <div class="content">
+                <p>Com base em suas respostas, sugerimos as seguintes faculdades:</p>
+                <ul>
+                    {% for faculdade in faculdades %}
+                    <li>{{ faculdade }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="/" class="button is-primary">Voltar para a página inicial</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
