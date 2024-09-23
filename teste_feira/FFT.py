@@ -1,12 +1,19 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
+app.secret_key = 'projetoFeira'
+
 # Configuração do MongoDB
-client = MongoClient("mongodb+srv://Robertin:Teste123456@cluster0.aktpx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-db = client['testefeira']
-collection = db['respostas']
+client1 = MongoClient("mongodb+srv://Robertin:Teste123456@cluster0.aktpx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db1 = client1['testefeira']
+collection_respostas = db1['respostas']
+
+# Conexão com o segundo banco de dados (João)
+client2 = MongoClient("mongodb+srv://Joao:Teste123456@cluster0.myod2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+db2 = client2['feedbacks']
+collection_feedbacks = db2['feedbacks']
 
 # Perguntas do questionário
 perguntas = [
@@ -75,7 +82,7 @@ def index():
 
 @app.route('/questionario')
 def questionario():
-    return render_template('questionario.html', perguntas = perguntas)
+    return render_template('questionario.html', perguntas=perguntas)
 
 # Rota para salvar respostas e determinar a área
 @app.route('/responder', methods=['POST'])
@@ -87,8 +94,10 @@ def responder():
 
         perfil = determinar_perfil(respostas)
 
-        # Salvar o nome do usuário e o perfil sugerido no MongoDB
-        collection.insert_one({"nome": nome, "perfil": perfil})
+        # Salvar o nome do usuário e o perfil sugerido no MongoDB (primeiro banco de dados)
+        collection_respostas.insert_one({"nome": nome, "perfil": perfil})
+
+        session['nome'] = nome
 
         return jsonify({"perfil_sugerido": perfil})
     except Exception as e:
@@ -114,21 +123,24 @@ def determinar_perfil(respostas):
     faculdades_sugeridas = nichos_faculdades[nicho_sugerido]["faculdades"]
     return {"nicho": nicho_sugerido, "faculdades": faculdades_sugeridas}
 
+# Rota para feedback
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     if request.method == 'POST':
         try:
             # Coletar feedback do formulário
-            nome = request.form['nome']
+            nome = session.get('nome')
             feedback_texto = request.form['feedback']
 
-            # Não salvar o feedback no MongoDB, apenas exibir na página
+            # Salvar o feedback no segundo banco de dados (MongoDB do João)
+            collection_feedbacks.insert_one({"nome": nome, "feedback": feedback_texto})
+
+            # Exibir página de confirmação
             return render_template('feedback_recebido.html', nome=nome, feedback=feedback_texto)
         except Exception as e:
             return jsonify({"erro": str(e)}), 400
     else:
         return render_template('feedback.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
