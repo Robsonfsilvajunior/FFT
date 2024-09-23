@@ -6,8 +6,15 @@
     <title>Feedback Recebido!</title>
 </head>
 <body>
-    <h1>Obrigado pelo seu feedback, {{ nome }}!</h1>
+    <h1>Obrigado pelo seu feedback!</h1>
     <p>Agradecemos por compartilhar sua opinião.</p>
-    <a href="/index" class="button is-primary is-large">Voltar ao início</a>
+    <a href="/" class="button is-primary is-large">Voltar ao início</a>
+
+    <script>
+        setTimeout(function(){
+            window.location.href = '/';
+        }, 15000); // Redireciona após 10 segundos
+    </script>
+    
 </body>
 </html>
