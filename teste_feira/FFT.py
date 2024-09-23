@@ -122,14 +122,13 @@ def feedback():
             nome = request.form['nome']
             feedback_texto = request.form['feedback']
 
-            # Salvar o feedback no MongoDB
-            feedback_collection.insert_one({"nome": nome, "feedback": feedback_texto}) # type: ignore
-
-            return render_template('feedback_recebido.html', nome=nome)
+            # Não salvar o feedback no MongoDB, apenas exibir na página
+            return render_template('feedback_recebido.html', nome=nome, feedback=feedback_texto)
         except Exception as e:
             return jsonify({"erro": str(e)}), 400
     else:
         return render_template('feedback.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
