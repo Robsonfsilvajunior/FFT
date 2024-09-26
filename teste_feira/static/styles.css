@@ -202,3 +202,66 @@ textarea:focus {
     background-color: #e0f7f2;
     outline: none; /* tira aquela borda azul padrão do navegador */
 }
+
+/* Estilos para os campos do questionário aprimorados */
+.pergunta-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #00a676;
+    border-radius: 10px;
+    background-color: #e8f6f3;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+.pergunta-box label {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.range-label {
+    font-size: 1em;
+    font-weight: 400;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.slider-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.slider-container input[type="radio"] {
+    display: none;
+}
+
+.slider-container label {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-container input[type="radio"]:checked + label {
+    background-color: #00e676;
+    color: white;
+    transform: scale(1.05);
+}
+
+.slider-container label:hover {
+    background-color: #66ffa6;
+}
+
+/* Estilos adicionais para espaçamento entre botões */
+.button.is-primary.is-large + .button.is-primary.is-large {
+    margin-left: 20px;
+}

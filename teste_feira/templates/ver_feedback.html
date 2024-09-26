@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback dos Usuários</title>
 </head>
+
 <body>
     <h1>Feedback dos Usuários</h1>
     {% if feedbacks %}
-        <ul>
-            {% for feedback in feedbacks %}
-                <li><strong>{{ feedback.nome }}</strong>: {{ feedback.feedback }}</li>
-            {% endfor %}
-        </ul>
+    <ul>
+        {% for feedback in feedbacks %}
+        <li><strong>{{ feedback.nome }}</strong>: {{ feedback.feedback }}</li>
+        {% endfor %}
+    </ul>
     {% else %}
-        <p>Nenhum feedback recebido até agora.</p>
+    <p>Nenhum feedback recebido até agora.</p>
     {% endif %}
 </body>
+
 </html>
