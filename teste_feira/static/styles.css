@@ -135,19 +135,23 @@ button[type="submit"],
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove o sublinhado */
 }
 
 button[type="submit"]:hover,
 .button.is-primary:hover {
     background-color: #66ffa6; /* Efeito de hover mais claro */
     transform: translateY(-2px);
+    text-decoration: none; /* Remove o sublinhado no hover também */
 }
 
 button[type="submit"]:active,
 .button.is-primary:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Remove o sublinhado no estado ativo */
 }
+
 
 /* Estilos adicionais para alinhamento centralizado */
 .has-text-centered {
@@ -181,4 +185,20 @@ button[type="submit"]:active,
         font-size: 1em;
         padding: 12px 25px;
     }
+}
+
+textarea {
+    background: #f9f9f9;
+    border: 1px solid #00a676;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+    line-height: 1.6;
+    padding: 12px;
+    width: calc(100% - 24px); /* considerando o padding */
+    transition: background-color 0.3s ease;
+}
+
+textarea:focus {
+    background-color: #e0f7f2;
+    outline: none; /* tira aquela borda azul padrão do navegador */
 }
