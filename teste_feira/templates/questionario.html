@@ -12,13 +12,11 @@
     <h1>Questionário de Faculdades</h1>
 
     <form id="questionario-form" class="notification">
-        <!-- Caixa para o nome do usuário -->
         <div class="nome-box hero is-primary">
             <label for="nome">Digite seu nome abaixo</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required>
         </div>
 
-        <!-- Perguntas do questionário -->
         {% for pergunta in perguntas %}
         <div class="pergunta-box">
             <label>{{ pergunta['pergunta'] }}</label><br>
