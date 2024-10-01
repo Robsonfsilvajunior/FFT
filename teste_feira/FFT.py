@@ -11,7 +11,7 @@ db1 = client1['testefeira']
 collection_respostas = db1['respostas']
 
 # Conexão com o segundo banco de dados (João)
-client2 = MongoClient("mongodb+srv://Joao:Teste123456@cluster0.myod2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client2 = MongoClient("mongodb+srv://Joao:Teste12345@cluster0.myod2.mongodb.net/feedbacks?retryWrites=true&w=majority&appName=Cluster0")
 db2 = client2['feedbacks']
 collection_feedbacks = db2['feedbacks']
 
