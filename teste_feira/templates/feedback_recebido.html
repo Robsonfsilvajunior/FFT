@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Recebido!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
     <h1>Obrigado pelo seu feedback!</h1>
     <p>Agradecemos por compartilhar sua opinião.</p>
     <a href="/" class="button is-primary is-large">Voltar ao início</a>
 
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             window.location.href = '/';
         }, 15000); // Redireciona após 10 segundos
     </script>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,267 @@
+/* Importar a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Estilos para a seção hero */
+.hero.is-primary {
+    background-color: #00a676;
+    color: white;
+    padding: 50px 20px;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.hero .title {
+    font-size: 3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero .subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+/* Estilos para a seção de introdução */
+.notification {
+    background-color: #e0f7f2;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+.notification p {
+    font-size: 1.2em;
+    color: #0fb988;
+}
+
+/* Estilos específicos para a caixa de nome */
+.nome-box {
+    background-color: #00a676;
+    color: white;
+    padding: 50px 20px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.nome-box label {
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.nome-box input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    color: #333;
+    outline: none;
+}
+
+.nome-box input[type="text"]::placeholder {
+    color: #aaa;
+    opacity: 0.7;
+}
+
+/* Estilos para os campos do questionário */
+.pergunta-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #00a676;
+    border-radius: 10px;
+    background-color: #e8f6f3;
+    transition: background-color 0.3s ease;
+}
+
+.pergunta-box label {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.pergunta-box input[type="radio"] {
+    margin: 0 10px;
+    transform: scale(1.2);
+    accent-color: #00a676;
+    cursor: pointer;
+}
+
+.pergunta-box input[type="radio"]:focus {
+    outline: 2px solid #0fb988;
+}
+
+/* Botão de envio do formulário */
+button[type="submit"],
+.button.is-primary {
+    background-color: #00e676; /* Verde mais clarinho */
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+button[type="submit"]:hover,
+.button.is-primary:hover {
+    background-color: #66ffa6; /* Efeito de hover mais claro */
+    transform: translateY(-2px);
+    text-decoration: none; /* Remove o sublinhado no hover também */
+}
+
+button[type="submit"]:active,
+.button.is-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Remove o sublinhado no estado ativo */
+}
+
+
+/* Estilos adicionais para alinhamento centralizado */
+.has-text-centered {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Ajustes para dispositivos menores */
+@media (max-width: 768px) {
+    .hero .title {
+        font-size: 2.5em;
+    }
+
+    .hero .subtitle {
+        font-size: 1.2em;
+    }
+
+    .button.is-primary {
+        font-size: 1.2em;
+        padding: 12px 25px;
+    }
+
+    .hero.is-primary,
+    .notification,
+    .nome-box {
+        padding: 30px 10px;
+    }
+    
+    button[type="submit"],
+    .button.is-primary {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+}
+
+textarea {
+    background: #f9f9f9;
+    border: 1px solid #00a676;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+    line-height: 1.6;
+    padding: 12px;
+    width: calc(100% - 24px); /* considerando o padding */
+    transition: background-color 0.3s ease;
+}
+
+textarea:focus {
+    background-color: #e0f7f2;
+    outline: none; /* tira aquela borda azul padrão do navegador */
+}
+
+/* Estilos para os campos do questionário aprimorados */
+.pergunta-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #00a676;
+    border-radius: 10px;
+    background-color: #e8f6f3;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+.pergunta-box label {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.range-label {
+    font-size: 1em;
+    font-weight: 400;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.slider-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.slider-container input[type="radio"] {
+    display: none;
+}
+
+.slider-container label {
+    display: inline-block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.slider-container input[type="radio"]:checked + label {
+    background-color: #00e676;
+    color: white;
+    transform: scale(1.05);
+}
+
+.slider-container label:hover {
+    background-color: #66ffa6;
+}
+
+/* Estilos adicionais para espaçamento entre botões */
+.button.is-primary.is-large + .button.is-primary.is-large {
+    margin-left: 20px;
+}

@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
+
 <body>
-    <form action="/feedback" method="post">
-        <input type="hidden" name="nome" value="{{ nome }}">
-        <textarea name="feedback" rows="4" cols="50" placeholder="Digite seu feedback aqui..." required></textarea>
-        <br>
-        <button type="submit">Enviar Feedback</button>
-    </form>
+    <section class="textarea">
+        <div class="textarea:focus">
+            <form action="/feedback" method="post">
+                <input type="hidden" name="nome" value="{{ nome }}">
+                <textarea name="feedback" rows="4" cols="50" placeholder="Digite seu feedback aqui..." required style="resize: none; 
+                width: 100%; 
+                max-width: 500px; 
+                height: 150px; 
+                padding: 10px; 
+                border-radius: 10px; 
+                border: 1px solid #00a676; 
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+</textarea>
+
+                <br>
+                <button type="submit">Enviar Feedback</button>
+            </form>
+        </div>
+    </section>
+
+
 </body>
+
 </html>

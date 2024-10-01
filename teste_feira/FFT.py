@@ -14,7 +14,7 @@ collection_respostas = db1['respostas']
 client2 = MongoClient("mongodb+srv://Joao:Teste12345@cluster0.myod2.mongodb.net/feedbacks?retryWrites=true&w=majority&appName=Cluster0")
 db2 = client2['feedbacks']
 collection_feedbacks = db2['feedbacks']
-
+    
 # Perguntas do questionário
 perguntas = [
     {"pergunta": "Eu gosto de resolver problemas lógicos e matemáticos."},  # q1

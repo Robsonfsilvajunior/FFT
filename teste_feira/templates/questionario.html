@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário de Faculdades</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
+
 <body>
     <h1>Questionário de Faculdades</h1>
-    
-    <form id="questionario-form">
-        <!-- Campo para o nome do usuário -->
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br><br>
 
-        <!-- Perguntas do questionário -->
+    <form id="questionario-form" class="notification">
+        <div class="nome-box hero is-primary">
+            <label for="nome">Digite seu nome abaixo</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required>
+        </div>
+
         {% for pergunta in perguntas %}
+        <div class="pergunta-box">
             <label>{{ pergunta['pergunta'] }}</label><br>
-            <input type="radio" name="q{{ loop.index }}" value="1" required> 1
-            <input type="radio" name="q{{ loop.index }}" value="2" required> 2
-            <input type="radio" name="q{{ loop.index }}" value="3" required> 3
-            <input type="radio" name="q{{ loop.index }}" value="4" required> 4
-            <input type="radio" name="q{{ loop.index }}" value="5" required> 5
-            <br><br>
+            <div class="slider-container">
+                <input type="radio" id="q{{ loop.index }}-1" name="q{{ loop.index }}" value="1" required>
+                <label for="q{{ loop.index }}-1">Não</label>
+
+                <input type="radio" id="q{{ loop.index }}-2" name="q{{ loop.index }}" value="2" required>
+                <label for="q{{ loop.index }}-2">Provavelmente não</label>
+
+                <input type="radio" id="q{{ loop.index }}-3" name="q{{ loop.index }}" value="3" required>
+                <label for="q{{ loop.index }}-3">Indiferente</label>
+
+                <input type="radio" id="q{{ loop.index }}-4" name="q{{ loop.index }}" value="4" required>
+                <label for="q{{ loop.index }}-4">Possivelmente sim</label>
+
+                <input type="radio" id="q{{ loop.index }}-5" name="q{{ loop.index }}" value="5" required>
+                <label for="q{{ loop.index }}-5">Sim</label>
+            </div>
+        </div>
         {% endfor %}
-        
+
         <button type="submit">Enviar</button>
     </form>
 
     <p id="resultado"></p>
 
     <script>
-        document.getElementById('questionario-form').addEventListener('submit', function(event) {
+        document.getElementById('questionario-form').addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = new FormData(this);
@@ -38,18 +53,21 @@
                 method: 'POST',
                 body: new URLSearchParams(formData)
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.erro) {
-                    document.getElementById('resultado').innerText = 'Erro: ' + data.erro;
-                } else {
-                    document.getElementById('resultado').innerText = 'Perfil sugerido: ' + data.perfil_sugerido.nicho + '\nFaculdades recomendadas: ' + data.perfil_sugerido.faculdades.join(', ');
-                }
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        document.getElementById('resultado').innerText = 'Erro: ' + data.erro;
+                    } else {
+                        document.getElementById('resultado').innerText = 'Perfil sugerido: ' + data.perfil_sugerido.nicho + '\nFaculdades recomendadas: ' + data.perfil_sugerido.faculdades.join(', ');
+                    }
+                });
         });
     </script>
+
     <div class="has-text-centered">
-        <a href="/feedback" class="button is-primary is-large">Dê se Feedback</a>
+        <a href="/feedback" class="button is-primary is-large">Dê seu Feedback</a>
+        <a href="/" class="button is-primary is-large">Voltar à Página Inicial</a>
     </div>
 </body>
+
 </html>
