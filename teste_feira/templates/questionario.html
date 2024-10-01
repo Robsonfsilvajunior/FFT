@@ -22,19 +22,19 @@
             <label>{{ pergunta['pergunta'] }}</label><br>
             <div class="slider-container">
                 <input type="radio" id="q{{ loop.index }}-1" name="q{{ loop.index }}" value="1" required>
-                <label for="q{{ loop.index }}-1">Não</label>
+                <label for="q{{ loop.index }}-1">Nunca</label>
 
                 <input type="radio" id="q{{ loop.index }}-2" name="q{{ loop.index }}" value="2" required>
-                <label for="q{{ loop.index }}-2">Provavelmente não</label>
+                <label for="q{{ loop.index }}-2">Quase Nunca</label>
 
                 <input type="radio" id="q{{ loop.index }}-3" name="q{{ loop.index }}" value="3" required>
-                <label for="q{{ loop.index }}-3">Indiferente</label>
+                <label for="q{{ loop.index }}-3">As Vezes</label>
 
                 <input type="radio" id="q{{ loop.index }}-4" name="q{{ loop.index }}" value="4" required>
-                <label for="q{{ loop.index }}-4">Possivelmente sim</label>
+                <label for="q{{ loop.index }}-4">Quase sempre</label>
 
                 <input type="radio" id="q{{ loop.index }}-5" name="q{{ loop.index }}" value="5" required>
-                <label for="q{{ loop.index }}-5">Sim</label>
+                <label for="q{{ loop.index }}-5">Sempre</label>
             </div>
         </div>
         {% endfor %}
