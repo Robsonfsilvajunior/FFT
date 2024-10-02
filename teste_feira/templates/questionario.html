@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário de Faculdades</title>
     <link rel="stylesheet" href="/static/styles.css">
-    <link rel="shortcut icon"  tipe="image/jpg" href="{{ url_for('static', filename='iconfuture.jpg')}}">
+    <link rel="shortcut icon" tipe="image/jpg" href="{{ url_for('static', filename='iconfuture.jpg') }}">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                 <label for="q{{ loop.index }}-2">Quase Nunca</label>
 
                 <input type="radio" id="q{{ loop.index }}-3" name="q{{ loop.index }}" value="3" required>
-                <label for="q{{ loop.index }}-3">As Vezes</label>
+                <label for="q{{ loop.index }}-3">Às vezes</label>
 
                 <input type="radio" id="q{{ loop.index }}-4" name="q{{ loop.index }}" value="4" required>
                 <label for="q{{ loop.index }}-4">Quase sempre</label>
@@ -47,21 +47,48 @@
 
     <script>
         document.getElementById('questionario-form').addEventListener('submit', function (event) {
-            event.preventDefault();
+            event.preventDefault();  // Prevenir o envio padrão do formulário
 
+            let isValid = true;
+            const inputs = document.querySelectorAll('input[type="radio"]:required');
+            let firstInvalidElement = null;
+
+            // Verificar se todas as perguntas foram respondidas
+            inputs.forEach((input) => {
+                const name = input.name;
+                const group = document.getElementsByName(name);
+
+                if (![...group].some(input => input.checked)) {
+                    isValid = false;
+                    if (!firstInvalidElement) {
+                        firstInvalidElement = group[0]; // Pega o primeiro elemento inválido
+                    }
+                }
+            });
+
+            if (!isValid) {
+                if (firstInvalidElement) {
+                    firstInvalidElement.scrollIntoView({ behavior: 'smooth' });
+                    firstInvalidElement.focus();
+                }
+                alert('Por favor, responda todas as perguntas antes de enviar.');
+                return;  // Impedir o envio
+            }
+
+            // Se o formulário for válido, enviamos os dados
             const formData = new FormData(this);
             fetch('/responder', {
                 method: 'POST',
                 body: new URLSearchParams(formData)
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.erro) {
-                        document.getElementById('resultado').innerText = 'Erro: ' + data.erro;
-                    } else {
-                        document.getElementById('resultado').innerText = 'Perfil sugerido: ' + data.perfil_sugerido.nicho + '\nFaculdades recomendadas: ' + data.perfil_sugerido.faculdades.join(', ');
-                    }
-                });
+            .then(response => response.json())
+            .then(data => {
+                if (data.erro) {
+                    document.getElementById('resultado').innerText = 'Erro: ' + data.erro;
+                } else {
+                    document.getElementById('resultado').innerText = 'Perfil sugerido: ' + data.perfil_sugerido.nicho + '\nFaculdades recomendadas: ' + data.perfil_sugerido.faculdades.join(', ');
+                }
+            });
         });
     </script>
 

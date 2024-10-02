@@ -33,7 +33,7 @@ perguntas = [
     {"pergunta": "Eu gosto de planejar e organizar tarefas ou eventos."},  # q12
     {"pergunta": "Sinto-me atraído(a) por assuntos relacionados a leis e justiça."},  # q13
     {"pergunta": "Prefiro trabalhar em ambientes que exigem precisão e atenção aos detalhes."},  # q14
-    {"pergunta": "Eu me interesso por política, história e como a sociedade funciona."},  # q15
+    {"pergunta": "Eu me interesso por política e como a sociedade funciona."},  # q15
     {"pergunta": "Tenho facilidade em aprender e aplicar conhecimentos científicos."},  # q16
     {"pergunta": "Sinto que sou mais produtivo(a) quando trabalho de forma independente."},  # q17
     {"pergunta": "Eu prefiro desafios intelectuais a tarefas físicas."},  # q18
@@ -44,35 +44,31 @@ perguntas = [
 # Nichos de faculdades e as perguntas relacionadas
 nichos_faculdades = {
     "Tecnologia e Matemática": {
-        "perguntas": ['q1', 'q6', 'q7', 'q11', 'q14'],
-        "faculdades": ["Engenharia", "Ciência da Computação", "Matemática", "Estatística", "Sistemas de Informação"]
+        "perguntas": ['q1', 'q6', 'q7', 'q11'],
+        "faculdades": ["Engenharia", "Ciência da Computação", "Matemática"]
     },
     "Criatividade e Artes": {
-        "perguntas": ['q2', 'q10', 'q20'],
-        "faculdades": ["Design Gráfico", "Artes Visuais", "Arquitetura", "Moda", "Cinema e Audiovisual", "Publicidade"]
+        "perguntas": ['q2', 'q10','q12','q20'],
+        "faculdades": ["Design Gráfico", "Artes Visuais", "Arquitetura", "Moda", "Cinema e Audiovisual"]
     },
     "Humanas e Sociais": {
-        "perguntas": ['q4', 'q5', 'q9', 'q13', 'q15', 'q19'],
-        "faculdades": ["Direito", "Ciências Sociais", "Relações Internacionais", "História", "Sociologia", "Psicologia"]
+        "perguntas": ['q4','q9', 'q13', 'q15'],
+        "faculdades": ["Direito", "Ciências Sociais", "Recursos Humanos", "Sociologia", "Psicologia"]
     },
     "Saúde e Biologia": {
-        "perguntas": ['q8', 'q9', 'q16'],
+        "perguntas": [ 'q5', 'q8', 'q16','q14'],
         "faculdades": ["Medicina", "Enfermagem", "Nutrição", "Fisioterapia", "Educação Física"]
     },
     "Administração e Negócios": {
-        "perguntas": ['q3', 'q12', 'q17'],
-        "faculdades": ["Administração", "Ciências Contábeis", "Economia", "Marketing", "Gestão de Projetos"]
-    },
-    "Engenharia e Construção": {
-        "perguntas": ['q1', 'q11', 'q14', 'q16'],
-        "faculdades": ["Engenharia Civil", "Engenharia Mecânica", "Engenharia de Produção", "Arquitetura"]
+        "perguntas": ['q3', 'q12', 'q17', 'q19'],
+        "faculdades": ["Administração", "Ciências Contábeis", "Economia", "Marketing", "Gestão de Projetos ", "Estatística"]
     },
     "Comunicação e Mídias": {
-        "perguntas": ['q2', 'q4', 'q9', 'q10', 'q19'],
+        "perguntas": ['q2', 'q4','q10', 'q19'],
         "faculdades": ["Jornalismo", "Publicidade", "Comunicação Social", "Relações Públicas"]
     },
     "Pesquisa e Ciências Exatas": {
-        "perguntas": ['q1', 'q16', 'q18'],
+        "perguntas": ['q1', 'q11','q16', 'q18'],
         "faculdades": ["Física", "Química", "Astronomia", "Geofísica", "Ciências Atuariais"]
     }
 }
